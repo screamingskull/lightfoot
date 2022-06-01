@@ -1,0 +1,12 @@
+755
+MSG002
+------
+
+Attention user 'jdoe'!
+
+You are intruding on private property. Disconnect and desist immediately or corrective actions will be taken!
+
+-
+
+System Administrator
+

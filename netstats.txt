@@ -1,0 +1,9 @@
+755
+Active Internet connections
+Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)
+tcp4       0      0  10.10.114.37.52449     sadmin-140-82-226-133  SYN_SENT
+tcp4       0     38  10.10.224.37.52448     jdoe-18.240.177.38     ESTABLISHED
+tcp4       0      0  10.10.192.183.52447    control-000.security   SYN_SENT
+tcp4       0     23  10.10.224.37.52445     lb1-140-82-1226-16     ESTABLISHED
+tcp4       0     10  10.10.224.37.52442     ez2-3-136-22-240.19197 ESTABLISHED
+

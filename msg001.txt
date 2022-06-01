@@ -1,0 +1,16 @@
+755
+MSG001
+------
+
+Attention!
+
+All users:
+
+Remember to lock your workstations *whenever* you leave your desk!
+
+Consequences of failure to comply are found in your employee manual. Read them!
+
+-
+
+System Administrator
+
