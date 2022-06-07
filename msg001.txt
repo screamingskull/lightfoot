@@ -1,16 +1,22 @@
 755
 MSG001
 ------
+To: All users
+Cc: 
+From: sadmin
+Subject: Social Engineering Attempts
+------
 
 Attention!
 
-All users:
+We have recently found ourselves the innocent target of attempts to breach our
+security via social engineering.
 
-Remember to lock your workstations *whenever* you leave your desk!
+Remember to lock your workstations *every time* you leave your desk!
 
-Consequences of failure to comply are found in your employee manual. Read them!
+Consequences of failure to comply with this protocol are found in your employee
+manual. Read it.
 
 -
 
 System Administrator
-

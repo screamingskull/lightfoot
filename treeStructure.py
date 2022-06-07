@@ -84,7 +84,7 @@ def locContents(currentLoc):
 		consoleOutput("\n")
 		
 	if currentLoc.locContents() != "":	
-		consoleOutput("\nDirectory contains:\n", pause)
+		consoleOutput("\nFiles:\n", pause)
 		loopLimit = len(currentLoc.locContents())
 		for loop in range(0, loopLimit):
 			consoleOutput(currentLoc.locContents()[loop], pause)
@@ -97,7 +97,7 @@ def locContents(currentLoc):
 
 def displayFile(fileName):
 	skipLine = 1
-	consoleOutput("\n")
+	consoleOutput("\n\n\n")
 	with open(fileName + ".txt", "r") as file:
 		for line in file:
 			if skipLine != 0:
@@ -111,7 +111,8 @@ def displayFile(fileName):
 
 
 def promptPrint(prompt, promptLength):
-	consoleOutput("\n/")
+#	consoleOutput("\n/")
+	consoleOutput("/")
 	for loop in range(0, promptLength + 1):
 		consoleOutput(prompt[loop])
 		consoleOutput("/")

@@ -1,0 +1,6 @@
+755
+Note to self:
+feed cat
+shopping
+fix console tty2
+purge secure items

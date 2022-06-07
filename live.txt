@@ -1,7 +1,7 @@
 755
 Destination  Origin          Directory          File          Lock    Service    Username
 -----------------------------------------------------------------------------------------
-127.0.0.1    UKNOWN          /home/jdoe/          UNKNOWN       rw                 jdoe
-127.0.0.1    UKNOWN          /home/lightfoot/	  drop.bin      rx                 sadmin
+127.0.0.1    UKNOWN          /home/jdoe/          drop.bin      rwx                jdoe
+127.0.0.1    UKNOWN          /home/lightfoot/	  UNKNOWN       rwx                sadmin
 127.0.0.1    87.157.10.41    /home/ssmith/	  readme.txt    rw                 ssmith
 

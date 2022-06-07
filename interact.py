@@ -4,7 +4,7 @@ from dcString import *
 from threading import Timer
 
 
-actionList = ["exit", "quit", "cd", "pwd", "ls", "cat", "help", "clear", "mail", "netstat", "drop"]
+actionList = ["exit", "quit", "cd", "pwd", "ls", "cat", "help", "clear", "mail", "netstat", "drop", "force"]
 recognisedAction = ""
 pause = 0.00
 prompt = ["", "", "", "", "", "", "", "", "", ""]
@@ -13,27 +13,28 @@ currentUser = "other"
 
 
 #Tree objects format: Tree(preferred label, parent directory, [subdirectories list], [files present list], owner access, group access, others access, lock)
-chroot = Tree("chroot", "", ["var", "bin", "etc", "home", "tmp"], ["welcome", "readme", "help"], 7, 5, 5, False)
-var = Tree("var", "chroot", ["www"], [""], 7, 5, 5, False)
-bin = Tree("bin", "chroot", ["tools", "kernel"], [""], 7, 5, 0, False)
-etc = Tree("etc", "chroot", ["mail", "net"], [""], 7, 5, 5, False)
+recovery = Tree("recovery", "", ["var", "bin", "etc", "home", "tmp"], ["welcome", "readme", "help"], 7, 5, 5, False)
+var = Tree("var", "recovery", ["www"], [""], 7, 5, 5, False)
+bin = Tree("bin", "recovery", ["tools", "kernel"], [""], 7, 5, 0, False)
+etc = Tree("etc", "recovery", ["mail", "net"], [""], 7, 5, 5, False)
 mail = Tree("mail", "etc", [""], ["msg001", "msg002"], 7, 5, 5, False)
-home = Tree("home", "chroot", ["lightfoot", "jdoe", "ssmith"], [""], 7, 5, 5, False)
-tmp = Tree("tmp", "chroot", [""], ["readme_old", "dev_out", "~001tmp"], 7, 5, 5, False)
+home = Tree("home", "recovery", ["lightfoot", "jdoe", "ssmith"], [""], 7, 5, 5, False)
+tmp = Tree("tmp", "recovery", [""], ["readme_old", "dev_out", "~001tmp"], 7, 5, 5, False)
 lightfoot = Tree("lightfoot", "home", [""], [""], 7, 5, 5, False)
-jdoe = Tree("jdoe", "home", [""], [""], 7, 5, 0, False)
+jdoe = Tree("jdoe", "home", ["secure"], ["todo"], 7, 5, 5, False)
 ssmith = Tree("ssmith", "home", [""], [""], 7, 5, 0, False)
+secure = Tree("secure", "jdoe", [""], ["item1", "item2", "item3"], 7, 5, 5, False)
 www = Tree("www", "var", ["html"], [""], 7, 5, 5, False)
 html = Tree("html", "www", ["intranet"], [""], 7, 5, 5, False)
 intranet = Tree("intranet", "html", [""], [""], 7, 5, 5, False)
 tools = Tree("tools", "bin", ["hd"], [""], 7, 5, 5, False)
-net = Tree("net", "etc", ["connections"], [""], 7, 5, 5, False)
-connections = Tree("connections", "net", [""], ["liveconnections"], 7, 5, 5, False)
+net = Tree("net", "etc", [""], ["live"], 7, 5, 5, False)
+#connections = Tree("connections", "net", [""], [""], 7, 5, 5, False)
 hd = Tree("hd", "tools", [""], [""], 7, 5, 5, False)
 kernel = Tree("kernel", "bin", ["ver7"], [""], 7, 5, 5, False)
 ver7 = Tree("ver7", "kernel", [""], [""], 7, 5, 5, False)
 hd = Tree("hd", "tools", [""], [""], 7, 5, 5, False)
-currentLocation = chroot
+currentLocation = recovery
 
 prompt, promptLength = promptAdd(prompt, promptLength, currentLocation)
 
@@ -64,6 +65,11 @@ if testing != True:
 	consoleOutput("\n*** The system will reboot when you exit the shell.")
 	consoleOutput("\n\nGive root password for maintenance:")
 	input()
+	consoleOutput("\nRead error!")
+	consoleOutput("\n\n\n***************")
+	consoleOutput("\n Welcome jdoe! ")
+	consoleOutput("\n***************")
+	consoleOutput("\nType 'help' for a list of available commands.")
 	consoleOutput("\n", 2)
 	whereAmI(currentLocation)
 	# End of intro
@@ -115,7 +121,7 @@ while (recognisedAction != "exit") and (recognisedAction != "quit"):
 				currentLocation = accessObject
 				prompt, promptLength = promptAdd(prompt, promptLength, currentLocation)
 			else:
-				consoleOutput("\nAccess denied.")
+				consoleOutput("\nAccess denied.\n")
 				
 		elif (recognisedAction == "cd") and (recognisedParent != ""):
 			currentLocation = eval(recognisedParent)
@@ -135,18 +141,24 @@ while (recognisedAction != "exit") and (recognisedAction != "quit"):
 			displayFile(recognisedMail)
 		elif (recognisedAction == "clear"):
 			consoleClear()
+		elif (recognisedAction == "force"):
+			consoleOutput("\nNot enough privileges.")
+			consoleOutput("\nSystem Administrator has been alerted.\n")                        
 		elif (recognisedAction == "netstat"):
 			displayFile("netstats")
+			consoleOutput("\nCheck /etc/net/live for active connections.\n")
 		elif (recognisedAction == "drop"):
+			consoleOutput("Listing live connections...\n")
+			displayFile("live")
 			consoleOutput("\nAttempting to drop connection for user")
 			consoleOutput(".....", 2)
-			consoleOutput("\nUnable to drop user.")
+			consoleOutput("\n*** Error! Unable to drop user.")
 			consoleOutput("\n", 2)
-			consoleOutput("\nWARNING: ")
+			consoleOutput("\n*** WARNING: ")
 			consoleOutput("\nSystem Administrator has been alerted.")
 			consoleOutput("\n\nYou have new mail.\n")
 		else:	
-			consoleOutput("\nSyntax error")
+			consoleOutput("\nSyntax error\n")
 	
 consoleOutput("\n\n*** Signal 15 caught. \n\nBroadcast: Log off NOW! System going down for a reboot immediately...\n\n*** Switching to runlevel 5.")
 consoleOutput("\n\n*** Restarting")

@@ -1,28 +1,20 @@
 755
 
 Lightfoot Linux recovery console commands:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * cd: change directory. 
-	Usage: "cd <directory>"
-	
+  Usage: "cd <directory>"
 * pwd: display current location in the recovery system. 
-
 * ls: list files in current directory. 
-
 * cat: concatenate file. In English, displays the contents of a specified file.
-Usage: "cat <file>"
-	
+  Usage: "cat <file>"	
 * mail: read emails. 
-Usage: "mail <optional message file>". Used by itself, "mail" will display a list of emails. Used with a message file name (eg, "mail msg001") mail will display the contents of the specified email.
-
+  Usage: "mail <optional message file>". Used by itself, "mail" will display a list of emails. Used with a message file name (eg, "mail msg001") mail will display the contents of the specified email.
 * netstat: lists active network connections.
-
-* drop: 
-Usage: "drop <connection>". Drops the specified client network connection.
-
+* drop: drop the specified client's network connection.
+  Usage: "drop <username>"
+* force: attempt to force access to a directory by resetting its privileges. Use with caution!
+  Usage: "force <directory>"
 * exit: exit and reboot the system. 
-
 * quit: see exit.
-
 * help: displays this help file.

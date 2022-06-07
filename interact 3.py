@@ -44,6 +44,7 @@ testing = False
 if testing != True:
 	#Intro
 	consoleClear()
+	consoleOutput("\n")
 	displayFile("welcome")
 	consoleOutput("\n\nWelcome to Lightfoot Enterprises")
 	consoleOutput("\n", 0.2)
@@ -138,7 +139,7 @@ while (recognisedAction != "exit") and (recognisedAction != "quit"):
 		elif (recognisedAction == "netstat"):
 			displayFile("netstats")
 		elif (recognisedAction == "drop"):
-			pass
+			displayFile("liveconnections")
 		else:	
 			consoleOutput("\nSyntax error")
 	
